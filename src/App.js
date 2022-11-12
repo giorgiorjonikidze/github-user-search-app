@@ -77,7 +77,7 @@ function App() {
           {darkTheme ? (
             <div
               onClick={themeChanger}
-              className="text-sm font-bold font-spacemono text-white flex cursor-pointer"
+              className="text-sm font-bold font-spacemono text-white flex cursor-pointer select-none"
             >
               light
               <img src={sunIcon} className="pl-4" />
@@ -85,7 +85,7 @@ function App() {
           ) : (
             <div
               onClick={themeChanger}
-              className="text-sm font-bold font-spacemono text-light-dark-blue flex cursor-pointer"
+              className="text-sm font-bold font-spacemono text-light-dark-blue flex cursor-pointer select-none"
             >
               dark
               <img src={moonIcon} className="pl-4" />
