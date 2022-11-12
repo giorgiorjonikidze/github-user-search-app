@@ -16,8 +16,8 @@ module.exports = {
       "dark-black-blue": "#1E2A47",
       "light-font-color": "#4B6A9B",
       "dark-font-color": "#2B3442",
-      "allert-color": "#F74646",
-
+      "alert-color": "#F74646",
+      "white": "#ffffff"
     },
     fontFamily: {
       spacemono: ['Space Mono']
