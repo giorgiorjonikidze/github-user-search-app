@@ -32,10 +32,9 @@ function App() {
 
     try {
       const result = await axios.get(url);
-      console.log(result);
       setUserData(result);
+      setNotFound(false);
     } catch (err) {
-      console.log(err.response);
       setNotFound(true);
     }
   };
@@ -46,7 +45,6 @@ function App() {
 
   const searchHandler = () => {
     fetchData();
-    console.log(username);
   };
 
   const themeChanger = () => {
@@ -54,7 +52,6 @@ function App() {
 
     if (darkTheme) {
       document.body.style.backgroundColor = "#F2F2F2";
-      console.log(darkTheme);
     }
     if (!darkTheme) {
       document.body.style.backgroundColor = "#141D2F";
@@ -97,7 +94,7 @@ function App() {
           <input
             onChange={searchInputHandler}
             className={"pb-1   w-full h-[60px] rounded-[15px] box-border pl-[45px]    placeholder:font-spacemono placeholder:text-[13px] max-w-[730px] focus:outline-none " + (darkTheme ? "bg-dark-black-blue placeholder:text-white text-white" : "bg-white placeholder:text-light-font-color text-dark-font-color")}
-            placeholder="Search GitHub username…"
+            placeholder={notFound ? "" : "Search GitHub username…"}
           />
           <img
             src={searchIcon}
@@ -110,7 +107,7 @@ function App() {
             Search
           </button>
           {notFound && (
-            <span className="font-spacemono text-alert-color absolute right-[105px] top-[18px]">
+            <span className="font-spacemono text-alert-color absolute right-[91px]  py-[17px] bg-dark-black-blue box-border px-[5px] pl-[10px]">
               No results
             </span>
           )}

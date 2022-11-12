@@ -28,7 +28,6 @@ const ResultCard = ({ userData, darkTheme }) => {
     return `joined ${day} ${month} ${year}`;
   };
 
-  console.log(darkTheme, 'gamotana')
 
   return (
     <div className={"w-full   rounded-[15px] box-border pt-8 px-6  flex flex-col md:px-10 md:pt-10 max-w-[730px] xl:pl-[200px] " + (darkTheme ? "bg-dark-black-blue" : "bg-white")}>
