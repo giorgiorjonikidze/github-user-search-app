@@ -43,7 +43,8 @@ function App() {
     setUsername(e.target.value);
   };
 
-  const searchHandler = () => {
+  const searchHandler = (e) => {
+    e.preventDefault()
     fetchData();
   };
 
@@ -59,7 +60,7 @@ function App() {
   };
 
   return (
-    <div className="main-container w-screen h-screen box-border px-6 pt-8  md:px-[96px] md:pt-[140px] md:flex md:justify-center  xl:flex xl:justify-center">
+    <div className="main-container w-screen h-screen box-border px-6 pt-8  md:px-[96px] md:pt-[100px] md:flex md:justify-center  xl:flex xl:justify-center">
       <div className="">
         {/* header  */}
         <div className="flex justify-between items-center mb-[35px] max-w-[730px]">
@@ -90,28 +91,35 @@ function App() {
           )}
         </div>
         {/* search bar  */}
-        <div className="mb-4 relative max-w-[730px]">
-          <input
-            onChange={searchInputHandler}
-            className={"pb-1   w-full h-[60px] rounded-[15px] box-border pl-[45px]    placeholder:font-spacemono placeholder:text-[13px] max-w-[730px] focus:outline-none " + (darkTheme ? "bg-dark-black-blue placeholder:text-white text-white" : "bg-white placeholder:text-light-font-color text-dark-font-color")}
-            placeholder={notFound ? "" : "Search GitHub username…"}
-          />
-          <img
-            src={searchIcon}
-            className="absolute top-[20px] left-[16px] h-[18px] w-[18px]"
-          />
-          <button
-            onClick={searchHandler}
-            className="text-white w-[84px] h-[46px] bg-blue rounded-[10px] font-bold font-spacemono absolute right-[7px] top-[6.5px] text-[14px]"
-          >
-            Search
-          </button>
-          {notFound && (
-            <span className="font-spacemono text-alert-color absolute right-[91px]  py-[17px] bg-dark-black-blue box-border px-[5px] pl-[10px]">
-              No results
-            </span>
-          )}
-        </div>
+        <form onSubmit={searchHandler}>
+          <div className="mb-4 relative max-w-[730px]">
+            <input
+              onChange={searchInputHandler}
+              className={
+                "pb-1   w-full h-[60px] rounded-[15px] box-border pl-[45px]    placeholder:font-spacemono placeholder:text-[13px] max-w-[730px] focus:outline-none " +
+                (darkTheme
+                  ? "bg-dark-black-blue placeholder:text-white text-white"
+                  : "bg-white placeholder:text-light-font-color text-dark-font-color")
+              }
+              placeholder={notFound ? "" : "Search GitHub username…"}
+            />
+            <img
+              src={searchIcon}
+              className="absolute top-[20px] left-[16px] h-[18px] w-[18px]"
+            />
+            <button
+              type="submit"
+              className="text-white w-[84px] h-[46px] bg-blue rounded-[10px] font-bold font-spacemono absolute right-[7px] top-[6.5px] text-[14px]"
+            >
+              Search
+            </button>
+            {notFound && (
+              <span className="font-spacemono text-alert-color absolute right-[91px]  py-[17px] bg-dark-black-blue box-border px-[5px] pl-[10px]">
+                No results
+              </span>
+            )}
+          </div>
+        </form>
         {/* result block  */}
 
         <ResultCard userData={userData} darkTheme={darkTheme} />
